@@ -9,6 +9,7 @@ namespace TesodevBackendC.Order.Domain.Entities
 {
     public class ProductOrderDetail
     {
+        public Guid ProductOrderDetailId { get; set; }
         public Guid OrderDetailId { get; set; }
         public OrderDetail OrderDetail { get; set; }
         public Guid ProductId { get; set; }

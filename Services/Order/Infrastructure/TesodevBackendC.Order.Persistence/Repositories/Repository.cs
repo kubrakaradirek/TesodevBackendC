@@ -14,9 +14,8 @@ namespace TesodevBackendC.Order.Persistence.Repositories
         private readonly OrderDbContext _context;
         public Repository(OrderDbContext context)
         {
-            _context = context;
+                _context = context;
         }
-
         public async Task CreateAsync(T entity)
         {
             _context.Set<T>().Add(entity);  

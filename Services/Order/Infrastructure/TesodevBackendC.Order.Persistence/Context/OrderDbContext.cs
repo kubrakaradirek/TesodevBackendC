@@ -12,9 +12,9 @@ namespace TesodevBackendC.Order.Persistence.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=MONSTER\\MSSQLSERVERR;initial Catalog=OrderBCDb;integrated Security=true;User=sa;Password=622622aA.");
+            optionsBuilder.UseSqlServer("Server=localhost,1451;initial Catalog=OrderCDb;User=sa;Password=622622aA.");
         }
-        public DbSet<Address> Addresses { get; set; }
+       
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductOrderDetail> ProductOrderDetails { get; set; }

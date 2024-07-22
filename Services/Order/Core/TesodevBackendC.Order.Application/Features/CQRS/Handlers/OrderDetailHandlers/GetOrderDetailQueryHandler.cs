@@ -26,7 +26,9 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.OrderDetailHa
                 UpdatedAt = x.UpdatedAt,
                 Price = x.Price,
                 Quantity = x.Quantity,
-                Status = x.Status
+                Status = x.Status,
+                AddressId = x.AddressId,
+                CustomerId= x.CustomerId
 
             }).ToList();
         }

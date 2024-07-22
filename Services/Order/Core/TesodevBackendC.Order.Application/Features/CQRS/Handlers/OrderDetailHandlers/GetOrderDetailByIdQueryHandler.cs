@@ -27,7 +27,9 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.OrderDetailHa
                 Price = values.Price,
                 Status = values.Status,
                 CreatedAt = values.CreatedAt,
-                UpdatedAt = values.UpdatedAt
+                UpdatedAt = values.UpdatedAt,
+                CustomerId = values.CustomerId,
+                AddressId = values.AddressId
             };
 
         }

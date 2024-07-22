@@ -9,7 +9,7 @@ using TesodevBackendC.Order.Domain.Entities;
 
 namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers
 {
-    partial class DeleteOrderDetailCommandHandler
+    public class DeleteOrderDetailCommandHandler
     {
         private readonly IRepository<OrderDetail> _repository;
         public DeleteOrderDetailCommandHandler(IRepository<OrderDetail> repository)
