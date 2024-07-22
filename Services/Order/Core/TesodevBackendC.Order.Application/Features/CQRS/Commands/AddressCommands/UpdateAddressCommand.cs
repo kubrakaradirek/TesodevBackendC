@@ -12,6 +12,6 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Commands.AddressComman
         public string City { get; set; }
         public string Country { get; set; }
         public int CityCode { get; set; }
-        public Guid OrderId { get; set; }
+        public Guid OrderDetailId { get; set; }
     }
 }

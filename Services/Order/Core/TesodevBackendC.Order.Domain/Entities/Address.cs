@@ -13,8 +13,8 @@ namespace TesodevBackendC.Order.Domain.Entities
         public string Country { get; set; }
         public int CityCode { get; set; }
         //One to one relationship
-        public Guid OrderId { get; set; }
-        public Order Order { get; set; }
+        public Guid OrderDetailId { get; set; }
+        public OrderDetail OrderDetail { get; set; }
 
     }
 }

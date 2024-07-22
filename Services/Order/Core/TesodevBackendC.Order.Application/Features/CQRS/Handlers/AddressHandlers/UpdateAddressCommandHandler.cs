@@ -9,23 +9,21 @@ using TesodevBackendC.Order.Domain.Entities;
 
 namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.AddressHandlers
 {
-    public class CreateAddressCommandhandler
+    public class UpdateAddressCommandHandler
     {
         private readonly IRepository<Address> _repository;
-        public CreateAddressCommandhandler(IRepository<Address> repository)
+        public UpdateAddressCommandHandler(IRepository<Address> repository)
         {
             _repository = repository;
         }
-        public async Task Handle(CreateAddressCommand createAddressCommand)
+        public async Task Handle(UpdateAddressCommand command)
         {
-            await _repository.CreateAsync(new Address
-            {
-                City = createAddressCommand.City,
-                Country = createAddressCommand.Country,
-                CityCode = createAddressCommand.CityCode,
-                OrderDetailId = createAddressCommand.OrderDetailId
-
-            });
+            var values=await _repository.GetByIdAsync(command.Id);
+            values.Country=command.Country;
+            values.City=command.City;
+            values.CityCode=command.CityCode;
+            values.OrderDetailId = command.OrderDetailId;
+            await _repository.UpdateAsync(values);
         }
     }
 }

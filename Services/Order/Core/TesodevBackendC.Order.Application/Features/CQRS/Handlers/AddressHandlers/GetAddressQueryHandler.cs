@@ -24,8 +24,8 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.AddressHandle
                 Id = x.Id,
                 Country = x.Country,    
                 City = x.City,  
-                CityCode = x.CityCode,  
-                OrderId = x.OrderId
+                CityCode = x.CityCode,
+                OrderDetailId = x.OrderDetailId
             }).ToList();
         }
     }

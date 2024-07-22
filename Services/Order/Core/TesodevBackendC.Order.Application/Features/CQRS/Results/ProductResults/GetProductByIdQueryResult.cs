@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TesodevBackendC.Order.Domain.Entities
+namespace TesodevBackendC.Order.Application.Features.CQRS.Results.ProductResults
 {
-    public class Product
+    public class GetProductByIdQueryResult
     {
         public Guid Id { get; set; }
         public string ImageUrl { get; set; }
         public string Name { get; set; }
-        //Many to many Order
-        public List<ProductOrderDetail> ProductOrders { get; set; }
     }
 }

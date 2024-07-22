@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TesodevBackendC.Order.Domain.Entities
 {
-    public class Order
+    public class OrderDetail
     {
         public Guid Id { get; set; }
         public int Quantity { get; set; }
@@ -17,7 +17,7 @@ namespace TesodevBackendC.Order.Domain.Entities
         //One to one relationship
         public Address Address { get; set; }
         //Many to many Product
-        public List<ProductOrder> ProductOrders { get; set; }
+        public List<ProductOrderDetail> ProductOrders { get; set; }
 
     }
 }

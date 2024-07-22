@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace TesodevBackendC.Order.Domain.Entities
 {
-    public class ProductOrder
+    public class ProductOrderDetail
     {
-        public Guid OrderId { get; set; }
-        public Order Order { get; set; }
+        public Guid OrderDetailId { get; set; }
+        public OrderDetail OrderDetail { get; set; }
         public Guid ProductId { get; set; }
         public Product Product { get; set; }
     }
