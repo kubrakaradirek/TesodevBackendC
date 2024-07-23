@@ -1,15 +1,14 @@
-﻿namespace TesodevBackendC.Customer.WebApi.Entities
+﻿using TesodevBackendC.Customer.WebApi.Entities;
+
+namespace TesodevBackendC.Customer.WebApi.Dtos.AddressDtos
 {
-    public class Address
+    public class CreateAddressDto
     {
-        public Guid Id { get; set; }
         public string AddressLine { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
         public int CityCode { get; set; }
         public Guid CustomerId { get; set; }
-        public Customerr Customer { get; set; }
         public Guid OrderDetailId { get; set; }
-
     }
 }

@@ -7,20 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.32">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.32" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.32">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Business\Abstract\" />
-    <Folder Include="Business\Concrete\" />
     <Folder Include="Controllers\" />
-    <Folder Include="DataAccess\Abstract\" />
-    <Folder Include="DataAccess\Concrete\" />
-    <Folder Include="DataAccess\EntityFramework\" />
-    <Folder Include="DataAccess\Migration\" />
-    <Folder Include="DataAccess\Repositories\" />
-    <Folder Include="Dtos\" />
-    <Folder Include="Mapping\" />
   </ItemGroup>
 
 </Project>
