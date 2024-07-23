@@ -13,13 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{C78D6DE9-426B-490D-B2C1-EBC374F259C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesodevBackendC.Order.Domain", "Services\Order\Core\TesodevBackendC.Order.Domain\TesodevBackendC.Order.Domain.csproj", "{15F193E2-B720-4002-AFEB-205F33A01D2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesodevBackendC.Order.Domain", "Services\Order\Core\TesodevBackendC.Order.Domain\TesodevBackendC.Order.Domain.csproj", "{15F193E2-B720-4002-AFEB-205F33A01D2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesodevBackendC.Order.Application", "Services\Order\Core\TesodevBackendC.Order.Application\TesodevBackendC.Order.Application.csproj", "{31B98DDE-2699-44C8-9466-51B65C90CC12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesodevBackendC.Order.Application", "Services\Order\Core\TesodevBackendC.Order.Application\TesodevBackendC.Order.Application.csproj", "{31B98DDE-2699-44C8-9466-51B65C90CC12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesodevBackendC.Order.Persistence", "Services\Order\Infrastructure\TesodevBackendC.Order.Persistence\TesodevBackendC.Order.Persistence.csproj", "{4C01F0C8-82BB-4E43-9096-2CF268795740}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesodevBackendC.Order.Persistence", "Services\Order\Infrastructure\TesodevBackendC.Order.Persistence\TesodevBackendC.Order.Persistence.csproj", "{4C01F0C8-82BB-4E43-9096-2CF268795740}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesodevBackendC.Order.WebApi", "Services\Order\Presentation\TesodevBackendC.Order.WebApi\TesodevBackendC.Order.WebApi.csproj", "{B54AC425-ACDC-4C6A-A6E6-CBF1503EF0C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesodevBackendC.Order.WebApi", "Services\Order\Presentation\TesodevBackendC.Order.WebApi\TesodevBackendC.Order.WebApi.csproj", "{B54AC425-ACDC-4C6A-A6E6-CBF1503EF0C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Customer", "Customer", "{7DBF4253-215B-417E-93F4-7BEF9E1949EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesodevBackendC.Customer.WebApi", "Services\Customer\TesodevBackendC.Customer.WebApi\TesodevBackendC.Customer.WebApi.csproj", "{86CD6160-C57A-44DE-A871-EDE69E13ABB6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +47,10 @@ Global
 		{B54AC425-ACDC-4C6A-A6E6-CBF1503EF0C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B54AC425-ACDC-4C6A-A6E6-CBF1503EF0C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B54AC425-ACDC-4C6A-A6E6-CBF1503EF0C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86CD6160-C57A-44DE-A871-EDE69E13ABB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86CD6160-C57A-44DE-A871-EDE69E13ABB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86CD6160-C57A-44DE-A871-EDE69E13ABB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86CD6160-C57A-44DE-A871-EDE69E13ABB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +64,8 @@ Global
 		{31B98DDE-2699-44C8-9466-51B65C90CC12} = {E48BDC82-AC33-4B10-9D5C-C8312011211B}
 		{4C01F0C8-82BB-4E43-9096-2CF268795740} = {A95EA03A-B710-4761-9F65-A889BBEEC676}
 		{B54AC425-ACDC-4C6A-A6E6-CBF1503EF0C3} = {C78D6DE9-426B-490D-B2C1-EBC374F259C2}
+		{7DBF4253-215B-417E-93F4-7BEF9E1949EF} = {B79ADDB3-3249-4271-946D-5527AD50D818}
+		{86CD6160-C57A-44DE-A871-EDE69E13ABB6} = {7DBF4253-215B-417E-93F4-7BEF9E1949EF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4142700B-7D2C-4C13-A17D-5E95AEBC846A}
