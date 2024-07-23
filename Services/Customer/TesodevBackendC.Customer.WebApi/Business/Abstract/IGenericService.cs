@@ -5,7 +5,7 @@
         void TCreate(T entity);
         void TDelete(T entity);
         void TUpdate(T entity);
-        T TGetById(int id);
+        T TGetById(Guid id);
         List<T> TGetListAll();
     }
 }

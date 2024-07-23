@@ -23,7 +23,7 @@ namespace TesodevBackendC.Customer.WebApi.DataAccess.Repositories
             _context.SaveChanges();
         }
 
-        public T GetById(int id)
+        public T GetById(Guid id)
         {
             return _context.Set<T>().Find(id);
         }

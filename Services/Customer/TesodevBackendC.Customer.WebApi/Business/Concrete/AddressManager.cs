@@ -22,7 +22,7 @@ namespace TesodevBackendC.Customer.WebApi.Business.Concrete
             _addressDal.Delete(entity);
         }
 
-        public Address TGetById(int id)
+        public Address TGetById(Guid id)
         {
             return _addressDal.GetById(id);
         }

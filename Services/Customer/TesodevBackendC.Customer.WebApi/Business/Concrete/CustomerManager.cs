@@ -22,7 +22,7 @@ namespace TesodevBackendC.Customer.WebApi.Business.Concrete
             _CustomerDal.Delete(entity);
         }
 
-        public Customerr TGetById(int id)
+        public Customerr TGetById(Guid id)
         {
             return _CustomerDal.GetById(id);
         }
