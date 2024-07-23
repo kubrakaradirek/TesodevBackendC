@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata;
 using TesodevBackendC.Order.Application.Features.CQRS.Commands.OrderDetailCommands;
 using TesodevBackendC.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
 using TesodevBackendC.Order.Application.Features.CQRS.Queries.OrderDetailQueries;
@@ -15,13 +16,17 @@ namespace TesodevBackendC.Order.WebApi.Controllers
         private readonly CreateOrderDetailCommandHandler _createOrderDetailCommandHandler;
         private readonly UpdateOrderDetailCommandHadnler _updateOrderDetailCommandHandler;
         private readonly DeleteOrderDetailCommandHandler _deleteOrderDetailCommandHandler;
-        public OrderDetailsController(GetOrderDetailQueryHandler getOrderDetailQueryHandler, GetOrderDetailByIdQueryHandler getOrderDetailByIdQueryHandler, DeleteOrderDetailCommandHandler deleteOrderDetailCommandHandler, UpdateOrderDetailCommandHadnler updateOrderDetailCommandHandler, CreateOrderDetailCommandHandler createOrderDetailCommandHandler)
+        private readonly ChangeOrderStatusToFalseCommandHandler _changeOrderStatusToFalseCommandHandler;
+        private readonly ChangeOrderStatusToTrueCommandHandler _changeOrderStatusToTrueCommandHandler;
+        public OrderDetailsController(GetOrderDetailQueryHandler getOrderDetailQueryHandler, GetOrderDetailByIdQueryHandler getOrderDetailByIdQueryHandler, DeleteOrderDetailCommandHandler deleteOrderDetailCommandHandler, UpdateOrderDetailCommandHadnler updateOrderDetailCommandHandler, CreateOrderDetailCommandHandler createOrderDetailCommandHandler, ChangeOrderStatusToFalseCommandHandler changeOrderStatusToFalseCommandHandler, ChangeOrderStatusToTrueCommandHandler changeOrderStatusToTrueCommandHandler)
         {
             _getOrderDetailQueryHandler = getOrderDetailQueryHandler;
             _getOrderDetailByIdQueryHandler = getOrderDetailByIdQueryHandler;
             _deleteOrderDetailCommandHandler = deleteOrderDetailCommandHandler;
             _updateOrderDetailCommandHandler = updateOrderDetailCommandHandler;
             _createOrderDetailCommandHandler = createOrderDetailCommandHandler;
+            _changeOrderStatusToFalseCommandHandler = changeOrderStatusToFalseCommandHandler;
+            _changeOrderStatusToTrueCommandHandler = changeOrderStatusToTrueCommandHandler;
         }
 
         [HttpGet]
@@ -54,6 +59,47 @@ namespace TesodevBackendC.Order.WebApi.Controllers
         {
             await _deleteOrderDetailCommandHandler.Handle(new DeleteOrderDetailCommand(id));
             return Ok("Sipariş başarıyla silindi.");
+        }
+        
+        [HttpPost("ChangeOrderStatusToFalse/{orderId}")]
+        public async Task<IActionResult> ChangeOrderStatusToFalse(Guid orderId)
+        {
+            var command = new ChangeOrderStatusToFalseCommand
+            {
+                OrderId = orderId,
+                Status = "Sipariş İptal" 
+            };
+
+            var result = await _changeOrderStatusToFalseCommandHandler.Handle(command);
+
+            if (result)
+            {
+                return Ok(new { Message = "Sipariş iptal edildi." });
+            }
+            else
+            {
+                return NotFound(new { Message = "Sipariş bulunamadı." });
+            }
+        }
+
+        [HttpPost("ChangeOrderStatusToTrue/{orderId}")]
+        public async Task<IActionResult> ChangeOrderStatusToTrue(Guid orderId)
+        {
+            var command = new ChangeOrderStatusToTrueCommand
+            {
+                OrderId = orderId
+            };
+
+            var result = await _changeOrderStatusToTrueCommandHandler.Handle(command);
+
+            if (result)
+            {
+                return Ok(new { Message = "Sipariş aktifleştirildi." });
+            }
+            else
+            {
+                return NotFound(new { Message = "Sipariş bulunamadı." });
+            }
         }
     }
 }

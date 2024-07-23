@@ -22,11 +22,11 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.OrderDetailHa
             {
                 Quantity = command.Quantity,
                 Price = command.Price,
-                Status = command.Status,
-                CreatedAt=command.CreatedAt,
-                UpdatedAt=command.UpdatedAt,
-                AddressId=command.AddressId,
-                CustomerId=command.CustomerId,
+                Status = "Sipariş oluşturuldu",
+                CreatedAt = command.CreatedAt,
+                UpdatedAt = command.UpdatedAt,
+                AddressId = command.AddressId,
+                CustomerId = command.CustomerId,
             });
         }
     }

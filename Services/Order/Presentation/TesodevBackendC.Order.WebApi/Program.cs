@@ -21,6 +21,9 @@ builder.Services.AddScoped<CreateProductCommandHandler>();
 builder.Services.AddScoped<DeleteProductCommandHandler>();
 builder.Services.AddScoped<UpdateProductCommandHandler>();
 
+builder.Services.AddScoped<ChangeOrderStatusToFalseCommandHandler>();
+builder.Services.AddScoped<ChangeOrderStatusToTrueCommandHandler>();
+
 // Add services to the container.
 
 builder.Services.AddControllers();

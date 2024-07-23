@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TesodevBackendC.Order.Application.Interfaces;
+using TesodevBackendC.Order.Domain.Entities;
 using TesodevBackendC.Order.Persistence.Context;
 
 namespace TesodevBackendC.Order.Persistence.Repositories
@@ -16,6 +17,40 @@ namespace TesodevBackendC.Order.Persistence.Repositories
         {
                 _context = context;
         }
+
+        public async Task<bool> ChangeOrderStatusToFalseAsync(Guid orderId, string status)
+        {
+            var order=await _context.Set<OrderDetail>().FindAsync(orderId);
+            if (order == null)
+            {
+                return false;
+            }
+            order.Status = status;
+            _context.Set<OrderDetail>().Update(order);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> ChangeOrderStatusToTrueAsync(Guid orderId, string status)
+        {
+            var order = await _context.OrderDetails.FindAsync(orderId);
+
+            if (order == null)
+            {
+                return false;
+            }
+            if(order.Status!= "Sipariş İptal")
+            {
+                return false;
+            }
+
+            order.Status = "Sipariş aktif";
+            _context.Set<OrderDetail>().Update(order);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
         public async Task CreateAsync(T entity)
         {
             _context.Set<T>().Add(entity);  
@@ -32,6 +67,8 @@ namespace TesodevBackendC.Order.Persistence.Repositories
         {
            return await _context.Set<T>().ToListAsync();
         }
+
+        
 
         public async Task<T> GetByIdAsync(Guid id)
         {

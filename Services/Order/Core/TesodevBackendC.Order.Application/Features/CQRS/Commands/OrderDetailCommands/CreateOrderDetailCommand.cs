@@ -11,7 +11,6 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Commands.OrderDetailCo
         public Guid CustomerId { get; set; }
         public int Quantity { get; set; }
         public double Price { get; set; }
-        public string Status { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public Guid AddressId { get; set; }
