@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  customerdb:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "622622aA."
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1452:1433"
+    volumes:
+      - customerbdb_data:/var/opt/mssql
+
+  orderdb:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "622622aA."
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1451:1433"
+    volumes:
+      - orderbdb_data:/var/opt/mssql
+
+volumes:
+  customerbdb_data:
+  orderbdb_data:

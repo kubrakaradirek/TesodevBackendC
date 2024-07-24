@@ -12,12 +12,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<CustomerDbContext>();
 
-//Mapleme iþlemi için gerekli konfigürasyon
+//Mapleme i?lemi için gerekli konfigürasyon
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 
-builder.Services.AddScoped<IAddressService,AddressManager>();
-builder.Services.AddScoped<IAddressDal,EfAddressDal>();
+builder.Services.AddScoped<IAddressService, AddressManager>();
+builder.Services.AddScoped<IAddressDal, EfAddressDal>();
 
 builder.Services.AddScoped<ICustomerService, CustomerManager>();
 builder.Services.AddScoped<ICustomerDal, EfCustomerDal>();
