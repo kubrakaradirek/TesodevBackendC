@@ -25,14 +25,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Customer", "Customer", "{7D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TesodevBackendC.Customer.WebApi", "Services\Customer\TesodevBackendC.Customer.WebApi\TesodevBackendC.Customer.WebApi.csproj", "{86CD6160-C57A-44DE-A871-EDE69E13ABB6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{920B69EF-E06B-4D23-A2CD-1BB048077760}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{A00DB460-4B8C-442D-9248-54F65F523064}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7F56EEC6-D51B-4EF5-8968-6080C3403932}"
-	ProjectSection(SolutionItems) = preProject
-		docker-compose.yml = docker-compose.yml
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesodevBackendC.OcelotApiGateway", "TesodevBackendC.OcelotApiGateway\TesodevBackendC.OcelotApiGateway.csproj", "{6BEB891D-687A-4539-A346-A098C0D4D5A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesodevBackendC.OcelotGateway", "ApiGateway\TesodevBackendC.OcelotGateway\TesodevBackendC.OcelotGateway.csproj", "{5298357F-B47E-4F55-A6FF-666939FF00E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,10 +55,10 @@ Global
 		{86CD6160-C57A-44DE-A871-EDE69E13ABB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86CD6160-C57A-44DE-A871-EDE69E13ABB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86CD6160-C57A-44DE-A871-EDE69E13ABB6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6BEB891D-687A-4539-A346-A098C0D4D5A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6BEB891D-687A-4539-A346-A098C0D4D5A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6BEB891D-687A-4539-A346-A098C0D4D5A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6BEB891D-687A-4539-A346-A098C0D4D5A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5298357F-B47E-4F55-A6FF-666939FF00E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5298357F-B47E-4F55-A6FF-666939FF00E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5298357F-B47E-4F55-A6FF-666939FF00E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5298357F-B47E-4F55-A6FF-666939FF00E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,7 +74,7 @@ Global
 		{B54AC425-ACDC-4C6A-A6E6-CBF1503EF0C3} = {C78D6DE9-426B-490D-B2C1-EBC374F259C2}
 		{7DBF4253-215B-417E-93F4-7BEF9E1949EF} = {B79ADDB3-3249-4271-946D-5527AD50D818}
 		{86CD6160-C57A-44DE-A871-EDE69E13ABB6} = {7DBF4253-215B-417E-93F4-7BEF9E1949EF}
-		{6BEB891D-687A-4539-A346-A098C0D4D5A0} = {920B69EF-E06B-4D23-A2CD-1BB048077760}
+		{5298357F-B47E-4F55-A6FF-666939FF00E6} = {A00DB460-4B8C-442D-9248-54F65F523064}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4142700B-7D2C-4C13-A17D-5E95AEBC846A}
