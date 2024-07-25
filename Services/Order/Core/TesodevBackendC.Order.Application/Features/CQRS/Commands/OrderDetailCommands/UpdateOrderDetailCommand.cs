@@ -9,7 +9,7 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Commands.OrderDetailCo
     public class UpdateOrderDetailCommand
     {
         public Guid Id { get; set; }
-        public Guid CustomerId { get; set; }
+        public Guid CustomerrId { get; set; }
         public int Quantity { get; set; }
         public double Price { get; set; }
         public string Status { get; set; }

@@ -9,6 +9,5 @@ namespace TesodevBackendC.Customer.WebApi.Dtos.CustomerDtos
         public string Email { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
-        public Guid OrderDetailId { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.OrderDetailHa
             values.CreatedAt = command.CreatedAt;
             values.UpdatedAt = command.UpdatedAt;
             values.AddressId = command.AddressId;
-            values.CustomerId = command.CustomerId;
+            values.CustomerrId = command.CustomerrId;
             await _repository.UpdateAsync(values);
         }
     }

@@ -26,7 +26,7 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.OrderDetailHa
                 CreatedAt = command.CreatedAt,
                 UpdatedAt = command.UpdatedAt,
                 AddressId = command.AddressId,
-                CustomerId = command.CustomerId,
+                CustomerrId = command.CustomerrId,
             });
         }
     }

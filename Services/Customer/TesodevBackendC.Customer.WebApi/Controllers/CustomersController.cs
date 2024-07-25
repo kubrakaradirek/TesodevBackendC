@@ -31,8 +31,7 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
                 Name= createCustomerDto.Name,
                 Email= createCustomerDto.Email,
                 CreatedAt= DateTime.Now,
-                UpdatedAt= DateTime.Now,
-                OrderDetailId= createCustomerDto.OrderDetailId
+                UpdatedAt= DateTime.Now
             };
             _customerService.TCreate(customerr);
             return Ok("Müşteri başarılı bir şekilde eklendi.");
@@ -55,8 +54,7 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
                 Name= updateCustomerDto.Name,
                 Email= updateCustomerDto.Email,
                 CreatedAt= DateTime.Now,
-                UpdatedAt= DateTime.Now,
-                OrderDetailId = updateCustomerDto.OrderDetailId
+                UpdatedAt= DateTime.Now
             };
             _customerService.TUpdate(customer);
             return Ok("Müşteri başarı bir şekilde güncellendi.");

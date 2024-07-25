@@ -8,7 +8,6 @@ namespace TesodevBackendC.Customer.WebApi.Dtos.AddressDtos
         public string City { get; set; }
         public string Country { get; set; }
         public int CityCode { get; set; }
-        public Guid CustomerId { get; set; }
-        public Guid OrderDetailId { get; set; }
+        public Guid CustomerrId { get; set; }
     }
 }

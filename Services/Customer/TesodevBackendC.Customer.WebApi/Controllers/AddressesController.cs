@@ -32,8 +32,7 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
                 City = createAddressDto.City,
                 CityCode = createAddressDto.CityCode,
                 Country = createAddressDto.Country,
-                CustomerId = createAddressDto.CustomerId,
-                OrderDetailId = createAddressDto.OrderDetailId
+                CustomerrId = createAddressDto.CustomerrId
             };
             _addressService.TCreate(address);
             return Ok("Adres başarılı bir şekilde eklendi.");
@@ -57,8 +56,7 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
                 City = updateAddressDto.City,
                 CityCode = updateAddressDto.CityCode,
                 Country = updateAddressDto.Country,
-                CustomerId = updateAddressDto.CustomerId,
-                OrderDetailId = updateAddressDto.OrderDetailId
+                CustomerrId = updateAddressDto.CustomerrId
             };
             _addressService.TUpdate(address);
             return Ok("Adres başarı bir şekilde güncellendi.");

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TesodevBackendC.Customer.WebApi.DataAccess.Concrete;
 
@@ -11,9 +12,10 @@ using TesodevBackendC.Customer.WebApi.DataAccess.Concrete;
 namespace TesodevBackendC.Customer.WebApi.Migrations
 {
     [DbContext(typeof(CustomerDbContext))]
-    partial class CustomerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240725180814_customerrıd")]
+    partial class customerrıd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,6 +48,9 @@ namespace TesodevBackendC.Customer.WebApi.Migrations
                     b.Property<Guid>("CustomerrId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("OrderDetailId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerrId");
@@ -70,6 +75,9 @@ namespace TesodevBackendC.Customer.WebApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("OrderDetailId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -81,7 +89,7 @@ namespace TesodevBackendC.Customer.WebApi.Migrations
             modelBuilder.Entity("TesodevBackendC.Customer.WebApi.Entities.Address", b =>
                 {
                     b.HasOne("TesodevBackendC.Customer.WebApi.Entities.Customerr", "Customerr")
-                        .WithMany("Addresses")
+                        .WithMany("Address")
                         .HasForeignKey("CustomerrId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -91,7 +99,7 @@ namespace TesodevBackendC.Customer.WebApi.Migrations
 
             modelBuilder.Entity("TesodevBackendC.Customer.WebApi.Entities.Customerr", b =>
                 {
-                    b.Navigation("Addresses");
+                    b.Navigation("Address");
                 });
 #pragma warning restore 612, 618
         }

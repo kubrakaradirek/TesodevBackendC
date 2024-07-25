@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<CustomerDbContext>();
 
-//Mapleme i?lemi için gerekli konfigürasyon
+//Map configuration
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 
@@ -36,7 +36,6 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddControllers();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
