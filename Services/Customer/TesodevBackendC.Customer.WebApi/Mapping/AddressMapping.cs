@@ -4,7 +4,7 @@ using TesodevBackendC.Customer.WebApi.Entities;
 
 namespace TesodevBackendC.Customer.WebApi.Mapping
 {
-    public class AddressMapping:Profile
+    public class AddressMapping : Profile
     {
         public AddressMapping()
         {
@@ -12,6 +12,7 @@ namespace TesodevBackendC.Customer.WebApi.Mapping
             CreateMap<Address, CreateAddressDto>().ReverseMap();
             CreateMap<Address, GetAddressDto>().ReverseMap();
             CreateMap<Address, UpdateAddressDto>().ReverseMap();
+            CreateMap<Address, AddressDto>().ReverseMap();
 
         }
     }

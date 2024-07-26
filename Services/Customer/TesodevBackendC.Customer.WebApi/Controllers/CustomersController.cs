@@ -9,7 +9,7 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class CustomersController : ControllerBase
-    { 
+    {
         private readonly ICustomerService _customerService;
         public CustomersController(ICustomerService customerService)
         {
@@ -19,7 +19,7 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
         [HttpGet]
         public IActionResult CustomerList()
         {
-            var customers = _customerService.GetCustomerListWithAddresses();
+            var customers = _customerService.TGetCustomerListWithAddresses();
             return Ok(customers);
         }
 
@@ -28,10 +28,9 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
         {
             Customerr customerr = new Customerr()
             {
-                Name= createCustomerDto.Name,
-                Email= createCustomerDto.Email,
-                CreatedAt= DateTime.Now,
-                UpdatedAt= DateTime.Now
+                Name = createCustomerDto.Name,
+                Email = createCustomerDto.Email,
+                CreatedAt = DateTime.Now,
             };
             _customerService.TCreate(customerr);
             return Ok("Müşteri başarılı bir şekilde eklendi.");
@@ -48,22 +47,27 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
         [HttpPut]
         public IActionResult UpdateCustomer(UpdateCustomerDto updateCustomerDto)
         {
-            Customerr customer = new Customerr()
-            {
-                Id= updateCustomerDto.Id,
-                Name= updateCustomerDto.Name,
-                Email= updateCustomerDto.Email,
-                CreatedAt= DateTime.Now,
-                UpdatedAt= DateTime.Now
-            };
-            _customerService.TUpdate(customer);
+            var values = _customerService.TGetById(updateCustomerDto.Id);
+            values.Id = updateCustomerDto.Id;
+            values.Name = updateCustomerDto.Name;
+            values.Email = updateCustomerDto.Email;
+            values.UpdatedAt = DateTime.Now;
+            _customerService.TUpdate(values);
             return Ok("Müşteri başarı bir şekilde güncellendi.");
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetCustomer(Guid id)
+        [HttpGet("GetCustomersWithAddresses/{id}")]
+        public IActionResult GetCustomersWithAddresses(Guid id)
         {
-            var value = _customerService.TGetById(id);
+            var result = _customerService.GetCustomerWithAddresses(id);
+            return Ok(result);
+        }
+
+
+        [HttpGet("ValidateCustomer/{id}")]
+        public IActionResult ValidateCustomer(Guid id)
+        {
+            var value = _customerService.TValidateCustomer(id);
             return Ok(value);
         }
     }

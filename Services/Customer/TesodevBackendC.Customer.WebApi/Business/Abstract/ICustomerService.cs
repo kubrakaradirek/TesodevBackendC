@@ -5,7 +5,10 @@ namespace TesodevBackendC.Customer.WebApi.Business.Abstract
 {
     public interface ICustomerService : IGenericService<Customerr>
     {
-        List<ResultCustomerDto> GetCustomerListWithAddresses();
+        CustomerWithAddressesDto GetCustomerWithAddresses(Guid id);
+        List<ResultCustomerDto> TGetCustomerListWithAddresses();
+        bool TValidateCustomer(Guid customerId);
+
 
     }
 }

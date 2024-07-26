@@ -13,6 +13,9 @@ namespace TesodevBackendC.Customer.WebApi.Mapping
             CreateMap<Customerr, CreateCustomerDto>().ReverseMap();
             CreateMap<Customerr, GetCustomerDto>().ReverseMap();
             CreateMap<Customerr, UpdateCustomerDto>().ReverseMap();
+            CreateMap<Customerr, CustomerWithAddressesDto>()
+            .ForMember(dest => dest.Addresses, opt => opt.MapFrom(src => src.Addresses))
+            .ReverseMap();
         }
     }
 }
