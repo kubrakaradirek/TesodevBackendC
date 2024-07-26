@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TesodevBackendC.Customer.WebApi.DataAccess.Concrete;
 
@@ -11,9 +12,10 @@ using TesodevBackendC.Customer.WebApi.DataAccess.Concrete;
 namespace TesodevBackendC.Customer.WebApi.Migrations
 {
     [DbContext(typeof(CustomerDbContext))]
-    partial class CustomerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240726074302_new_address")]
+    partial class new_address
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,11 +88,13 @@ namespace TesodevBackendC.Customer.WebApi.Migrations
 
             modelBuilder.Entity("TesodevBackendC.Customer.WebApi.Entities.Address", b =>
                 {
-                    b.HasOne("TesodevBackendC.Customer.WebApi.Entities.Customerr", null)
+                    b.HasOne("TesodevBackendC.Customer.WebApi.Entities.Customerr", "Customerr")
                         .WithMany("Addresses")
                         .HasForeignKey("CustomerrId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Customerr");
                 });
 
             modelBuilder.Entity("TesodevBackendC.Customer.WebApi.Entities.Customerr", b =>

@@ -19,8 +19,8 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
         [HttpGet]
         public IActionResult CustomerList()
         {
-            var values = _customerService.TGetListAll();
-            return Ok(values);
+            var customers = _customerService.GetCustomerListWithAddresses();
+            return Ok(customers);
         }
 
         [HttpPost]

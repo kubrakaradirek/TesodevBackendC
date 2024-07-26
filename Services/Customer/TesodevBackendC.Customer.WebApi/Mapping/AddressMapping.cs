@@ -12,7 +12,7 @@ namespace TesodevBackendC.Customer.WebApi.Mapping
             CreateMap<Address, CreateAddressDto>().ReverseMap();
             CreateMap<Address, GetAddressDto>().ReverseMap();
             CreateMap<Address, UpdateAddressDto>().ReverseMap();
-            
+
         }
     }
 }

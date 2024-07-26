@@ -28,7 +28,9 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
         {
             Address address = new Address()
             {
-                AddressLine = createAddressDto.AddressLine,
+               AddressLine1=createAddressDto.AddressLine1,
+               AddressLine2=createAddressDto.AddressLine2,
+               AddressLine3=createAddressDto.AddressLine3,
                 City = createAddressDto.City,
                 CityCode = createAddressDto.CityCode,
                 Country = createAddressDto.Country,
@@ -52,7 +54,9 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
             Address address = new Address()
             {
                 Id = updateAddressDto.Id,
-                AddressLine = updateAddressDto.AddressLine,
+                AddressLine1 = updateAddressDto.AddressLine1,
+                AddressLine2 = updateAddressDto.AddressLine2,
+                AddressLine3 = updateAddressDto.AddressLine3,
                 City = updateAddressDto.City,
                 CityCode = updateAddressDto.CityCode,
                 Country = updateAddressDto.Country,

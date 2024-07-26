@@ -1,5 +1,7 @@
-﻿using TesodevBackendC.Customer.WebApi.DataAccess.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using TesodevBackendC.Customer.WebApi.DataAccess.Abstract;
 using TesodevBackendC.Customer.WebApi.DataAccess.Concrete;
+using TesodevBackendC.Customer.WebApi.Entities;
 
 namespace TesodevBackendC.Customer.WebApi.DataAccess.Repositories
 {
@@ -38,5 +40,6 @@ namespace TesodevBackendC.Customer.WebApi.DataAccess.Repositories
             _context.Update(entity);
             _context.SaveChanges();
         }
+        
     }
 }

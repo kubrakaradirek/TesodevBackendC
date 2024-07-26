@@ -1,5 +1,8 @@
-﻿using TesodevBackendC.Customer.WebApi.Business.Abstract;
+﻿using AutoMapper;
+using TesodevBackendC.Customer.WebApi.Business.Abstract;
 using TesodevBackendC.Customer.WebApi.DataAccess.Abstract;
+using TesodevBackendC.Customer.WebApi.DataAccess.EntityFramework;
+using TesodevBackendC.Customer.WebApi.Dtos.CustomerDtos;
 using TesodevBackendC.Customer.WebApi.Entities;
 
 namespace TesodevBackendC.Customer.WebApi.Business.Concrete
@@ -7,9 +10,11 @@ namespace TesodevBackendC.Customer.WebApi.Business.Concrete
     public class CustomerManager : ICustomerService
     {
         private readonly ICustomerDal _CustomerDal;
-        public CustomerManager(ICustomerDal CustomerDal)
+        private readonly IMapper _mapper;
+        public CustomerManager(ICustomerDal CustomerDal,IMapper mapper)
         {
             _CustomerDal = CustomerDal;
+            _mapper=mapper;
         }
 
         public void TCreate(Customerr entity)
@@ -36,6 +41,10 @@ namespace TesodevBackendC.Customer.WebApi.Business.Concrete
         {
             _CustomerDal.Update(entity);
         }
-
+        public List<ResultCustomerDto> GetCustomerListWithAddresses()
+        {
+            var customers = _CustomerDal.GetCustomerListWithAddresses();
+            return _mapper.Map<List<ResultCustomerDto>>(customers);
+        }
     }
 }
