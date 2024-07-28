@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentValidation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,12 +13,20 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.OrderDetailHa
     public class UpdateOrderDetailCommandHadnler
     {
         private readonly IRepository<OrderDetail> _repository;
-        public UpdateOrderDetailCommandHadnler(IRepository<OrderDetail> repository)
+        private readonly IValidator<UpdateOrderDetailCommand> _validator;
+        public UpdateOrderDetailCommandHadnler(IRepository<OrderDetail> repository, IValidator<UpdateOrderDetailCommand> validator)
         {
             _repository = repository;
+            _validator = validator;
         }
         public async Task Handle(UpdateOrderDetailCommand command)
         {
+            var validationResult = await _validator.ValidateAsync(command);
+
+            if (!validationResult.IsValid)
+            {
+                throw new ValidationException(validationResult.Errors);
+            }
             var values = await _repository.GetByIdAsync(command.Id);
             values.Quantity = command.Quantity;
             values.Price = command.Price;

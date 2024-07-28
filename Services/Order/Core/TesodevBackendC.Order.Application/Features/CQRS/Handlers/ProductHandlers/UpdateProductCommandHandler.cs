@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentValidation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,12 +13,21 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.ProductHandle
     public class UpdateProductCommandHandler
     {
         private readonly IRepository<Product> _repository;
-        public UpdateProductCommandHandler(IRepository<Product> repository)
+        private readonly IValidator<UpdateProductCommand> _validator;
+        public UpdateProductCommandHandler(IRepository<Product> repository, IValidator<UpdateProductCommand> validator)
         {
             _repository = repository;
+            _validator = validator;
         }
         public async Task Handle(UpdateProductCommand command)
         {
+            var validationResult=await _validator.ValidateAsync(command);
+
+            if (!validationResult.IsValid)
+            {
+                throw new ValidationException(validationResult.Errors);
+            }
+
             var values = await _repository.GetByIdAsync(command.Id);
             values.Name = command.Name;
             values.ImageUrl = command.ImageUrl;

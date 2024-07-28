@@ -1,9 +1,13 @@
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
+using TesodevBackendC.Order.Application.Features.CQRS.Commands.ProductCommands;
 using TesodevBackendC.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
 using TesodevBackendC.Order.Application.Features.CQRS.Handlers.ProductHandlers;
 using TesodevBackendC.Order.Application.Features.CQRS.Handlers.ProductOrderDetailHandlers;
 using TesodevBackendC.Order.Application.Features.CQRS.Queries.ProductOrderDetailQueries;
 using TesodevBackendC.Order.Application.Interfaces;
+using TesodevBackendC.Order.Application.Validators.OrderDetailValidators;
+using TesodevBackendC.Order.Application.Validators.ProductValidators;
 using TesodevBackendC.Order.Persistence.Context;
 using TesodevBackendC.Order.Persistence.Repositories;
 
@@ -44,6 +48,13 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddControllers();
 
+builder.Services.AddFluentValidation(fv =>
+{
+    fv.RegisterValidatorsFromAssemblyContaining<CreateProductCommandValidator>();
+    fv.RegisterValidatorsFromAssemblyContaining<UpdateProductCommandValidator>();
+    fv.RegisterValidatorsFromAssemblyContaining<CreateOrderDetailCommandValidator>();
+    fv.RegisterValidatorsFromAssemblyContaining<UpdateOrderDetailCommandHadnler>();
+});
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();

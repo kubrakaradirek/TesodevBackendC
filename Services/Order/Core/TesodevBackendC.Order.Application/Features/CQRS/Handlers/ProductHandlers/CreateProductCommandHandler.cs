@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentValidation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,12 +13,21 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.ProductHandle
     public class CreateProductCommandHandler
     {
         private readonly IRepository<Product> _repository;
-        public CreateProductCommandHandler(IRepository<Product> repository)
+        private readonly IValidator<CreateProductCommand> _validator;
+        public CreateProductCommandHandler(IRepository<Product> repository, IValidator<CreateProductCommand> validator)
         {
             _repository = repository;
+            _validator = validator;
         }
         public async Task Handle(CreateProductCommand command)
         {
+            var validationResult = await _validator.ValidateAsync(command);
+
+            if (!validationResult.IsValid)
+            {
+                throw new ValidationException(validationResult.Errors);
+            }
+
             await _repository.CreateAsync(new Product
             {
                 ImageUrl = command.ImageUrl,
