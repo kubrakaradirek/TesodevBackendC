@@ -23,8 +23,7 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.OrderDetailHa
                 Quantity = command.Quantity,
                 Price = command.Price,
                 Status = "Sipariş oluşturuldu",
-                CreatedAt = command.CreatedAt,
-                UpdatedAt = command.UpdatedAt,
+                CreatedAt = DateTime.Now,
                 AddressId = command.AddressId,
                 CustomerrId = command.CustomerrId,
             });

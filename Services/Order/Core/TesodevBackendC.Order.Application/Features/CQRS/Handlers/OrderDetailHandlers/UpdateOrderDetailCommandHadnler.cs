@@ -21,9 +21,7 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.OrderDetailHa
             var values = await _repository.GetByIdAsync(command.Id);
             values.Quantity = command.Quantity;
             values.Price = command.Price;
-            values.Status = command.Status;
-            values.CreatedAt = command.CreatedAt;
-            values.UpdatedAt = command.UpdatedAt;
+            values.UpdatedAt = DateTime.Now;
             values.AddressId = command.AddressId;
             values.CustomerrId = command.CustomerrId;
             await _repository.UpdateAsync(values);

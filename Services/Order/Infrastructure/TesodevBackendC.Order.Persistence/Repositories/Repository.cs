@@ -75,6 +75,12 @@ namespace TesodevBackendC.Order.Persistence.Repositories
             return await _context.Set<T>().FindAsync(id);
         }
 
+        public async Task<List<string>> GetProductListByOrderDetailIdAsync(Guid orderId)
+        {
+            var products = await _context.ProductOrderDetails.Where(x => x.OrderDetailId == orderId).Join(_context.Products, x => x.ProductId, y => y.Id, (x, y) => y.Name).ToListAsync();
+            return  products;
+        }
+
         public async Task UpdateAsync(T entity)
         {
             _context.Set<T>().Update(entity);

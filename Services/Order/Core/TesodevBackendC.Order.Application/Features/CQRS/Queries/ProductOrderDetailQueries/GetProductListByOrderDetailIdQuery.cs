@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace TesodevBackendC.Order.Application.Features.CQRS.Queries.ProductOrderDetailQueries
 {
-    public class GetProductOrderDetailByOrderDetailIdQuery
+    public class GetProductListByOrderDetailIdQuery
     {
-        public int Id { get; set; }
-        public GetProductOrderDetailByOrderDetailIdQuery(int id)
+        public Guid OrderDetailId { get; set; }
+
+        public GetProductListByOrderDetailIdQuery(Guid orderDetailId)
         {
-            Id = id;
+            OrderDetailId = orderDetailId;
         }
     }
 }

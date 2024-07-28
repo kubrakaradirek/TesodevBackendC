@@ -15,8 +15,8 @@ namespace TesodevBackendC.Order.Application.Interfaces
         Task CreateAsync(T entity);
         Task UpdateAsync(T entity);
         Task DeleteAsync(T entity);
-        //Task<List<OrderDetail>> GetOrderListByCustomerIdAsync(Guid customerId);
         Task<bool> ChangeOrderStatusToFalseAsync(Guid orderId, string status);
         Task<bool> ChangeOrderStatusToTrueAsync(Guid orderId, string status);
+        Task<List<string>> GetProductListByOrderDetailIdAsync(Guid orderId);
     }
 }

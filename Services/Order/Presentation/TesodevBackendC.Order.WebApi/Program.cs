@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using TesodevBackendC.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
 using TesodevBackendC.Order.Application.Features.CQRS.Handlers.ProductHandlers;
+using TesodevBackendC.Order.Application.Features.CQRS.Handlers.ProductOrderDetailHandlers;
+using TesodevBackendC.Order.Application.Features.CQRS.Queries.ProductOrderDetailQueries;
 using TesodevBackendC.Order.Application.Interfaces;
 using TesodevBackendC.Order.Persistence.Context;
 using TesodevBackendC.Order.Persistence.Repositories;
@@ -24,6 +26,9 @@ builder.Services.AddScoped<UpdateProductCommandHandler>();
 
 builder.Services.AddScoped<ChangeOrderStatusToFalseCommandHandler>();
 builder.Services.AddScoped<ChangeOrderStatusToTrueCommandHandler>();
+
+builder.Services.AddScoped<GetProductListByOrderDetailIdQueryHandler>();
+
 
 
 builder.Services.AddCors(options =>
