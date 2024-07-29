@@ -18,5 +18,6 @@ namespace TesodevBackendC.Order.Persistence.Context
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductOrderDetail> ProductOrderDetails { get; set; }
+        public DbSet<OrderLog> OrderLogs { get; set; }
     }
 }

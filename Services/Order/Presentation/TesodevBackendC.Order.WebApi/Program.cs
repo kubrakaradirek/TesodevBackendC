@@ -8,8 +8,10 @@ using TesodevBackendC.Order.Application.Features.CQRS.Queries.ProductOrderDetail
 using TesodevBackendC.Order.Application.Interfaces;
 using TesodevBackendC.Order.Application.Validators.OrderDetailValidators;
 using TesodevBackendC.Order.Application.Validators.ProductValidators;
+using TesodevBackendC.Order.Domain.Entities;
 using TesodevBackendC.Order.Persistence.Context;
 using TesodevBackendC.Order.Persistence.Repositories;
+using TesodevBackendC.Order.WebApi.OrderConsumer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +34,10 @@ builder.Services.AddScoped<ChangeOrderStatusToFalseCommandHandler>();
 builder.Services.AddScoped<ChangeOrderStatusToTrueCommandHandler>();
 
 builder.Services.AddScoped<GetProductListByOrderDetailIdQueryHandler>();
+
+builder.Services.AddSingleton<OrderConsumer>();
+builder.Services.AddScoped<IRepository<OrderLog>, OrderLogRepository>(); // OrderLogRepository'yi scoped olarak tanýmlýyoruz.
+
 
 
 
@@ -72,6 +78,9 @@ app.UseCors("AllowAll");
 app.UseAuthorization();
 
 app.MapControllers();
+
+var orderConsumer = app.Services.GetRequiredService<OrderConsumer>();
+orderConsumer.Start();
 
 app.Run();
 

@@ -8,6 +8,7 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Commands.OrderDetailCo
 {
     public class CreateOrderDetailCommand
     {
+        public Guid Id { get; set; }
         public Guid CustomerrId { get; set; }
         public int Quantity { get; set; }
         public double Price { get; set; }

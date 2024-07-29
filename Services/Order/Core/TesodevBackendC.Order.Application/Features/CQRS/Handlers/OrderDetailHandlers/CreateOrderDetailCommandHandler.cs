@@ -19,7 +19,7 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.OrderDetailHa
             _repository = repository;
             _validator = validator;
         }
-        public async Task Handle(CreateOrderDetailCommand command)
+        public async Task<OrderDetail> Handle(CreateOrderDetailCommand command)
         {
             var validationResult = await _validator.ValidateAsync(command);
 
@@ -27,15 +27,20 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.OrderDetailHa
             {
                 throw new ValidationException(validationResult.Errors);
             }
-            await _repository.CreateAsync(new OrderDetail
+
+            var orderDetail = new OrderDetail
             {
+                Id=command.Id,
                 Quantity = command.Quantity,
                 Price = command.Price,
                 Status = "Sipariş oluşturuldu",
                 CreatedAt = DateTime.Now,
                 AddressId = command.AddressId,
                 CustomerrId = command.CustomerrId,
-            });
+            };
+
+            await _repository.CreateAsync(orderDetail);
+            return orderDetail;
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RabbitMQ.Client;
 using System.Reflection.Metadata;
+using System.Text;
 using TesodevBackendC.Order.Application.Features.CQRS.Commands.OrderDetailCommands;
 using TesodevBackendC.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
 using TesodevBackendC.Order.Application.Features.CQRS.Queries.OrderDetailQueries;
@@ -45,9 +47,27 @@ namespace TesodevBackendC.Order.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateOrderDetail(CreateOrderDetailCommand command)
         {
-            await _createOrderDetailCommandHandler.Handle(command);
-            return Ok("Sipariş  başarıyla eklendi.");
+            var orderDetail = await _createOrderDetailCommandHandler.Handle(command);
+
+            var connectionFactory = new ConnectionFactory()
+            {
+                HostName = "localhost"
+            };
+
+            using var connection = connectionFactory.CreateConnection();
+            using var channel = connection.CreateModel();
+
+            channel.QueueDeclare("OrderQ", false, false, false, null);
+
+            var messageContent = $"Yeni sipariş oluşturuldu. Sipariş ID: {orderDetail.Id}";
+
+            var byteMessageContent = Encoding.UTF8.GetBytes(messageContent);
+            channel.BasicPublish(exchange: "", routingKey: "OrderQ", basicProperties: null, body: byteMessageContent);
+
+            return Ok("Sipariş başarıyla eklendi ve bildirim mesajı kuyruğa alındı.");
         }
+
+
         [HttpPut]
         public async Task<IActionResult> UpdateOrderDetail(UpdateOrderDetailCommand command)
         {
