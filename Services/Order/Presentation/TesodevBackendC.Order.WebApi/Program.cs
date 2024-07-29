@@ -12,8 +12,16 @@ using TesodevBackendC.Order.Domain.Entities;
 using TesodevBackendC.Order.Persistence.Context;
 using TesodevBackendC.Order.Persistence.Repositories;
 using TesodevBackendC.Order.WebApi.OrderConsumer;
+using TesodevBackendC.Order.WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// SMTP Ayarlarý
+var smtpHost = "smtp.gmail.com";
+var smtpPort = 587;
+var fromAddress = "karadirekkubra2@gmail.com";
+var password = "622622aA.";
+var toAddress = "karadirekkubra96@gmail.com";
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
@@ -38,6 +46,9 @@ builder.Services.AddScoped<GetProductListByOrderDetailIdQueryHandler>();
 builder.Services.AddSingleton<OrderConsumer>();
 builder.Services.AddScoped<IRepository<OrderLog>, OrderLogRepository>(); // OrderLogRepository'yi scoped olarak tanýmlýyoruz.
 
+builder.Services.AddSingleton(new EmailService(smtpHost, smtpPort, fromAddress, password, toAddress));
+builder.Services.AddScoped<OrderLogService>();
+builder.Services.AddScoped<EmailJob>();
 
 
 

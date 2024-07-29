@@ -16,43 +16,35 @@ namespace TesodevBackendC.Customer.WebApi.Business.Concrete
             _customerDal = CustomerDal;
             _mapper=mapper;
         }
-
         public void TCreate(Customerr entity)
         {
             _customerDal.Create(entity);
         }
-
         public void TDelete(Customerr entity)
         {
             _customerDal.Delete(entity);
         }
-
         public Customerr TGetById(Guid id)
         {
             return _customerDal.GetById(id);
         }
-
         public List<Customerr> TGetListAll()
         {
             return _customerDal.GetListAll();
         }
-
         public void TUpdate(Customerr entity)
         {
             _customerDal.Update(entity);
         }
-        
         public CustomerWithAddressesDto GetCustomerWithAddresses(Guid id)
         {
             var customer = _customerDal.GetCustomerWithAddresses(id);
             return _mapper.Map<CustomerWithAddressesDto>(customer);
         }
-
         public bool TValidateCustomer(Guid customerId)
         {
             return _customerDal.ValidateCustomer(customerId);
         }
-
         public List<ResultCustomerDto> TGetCustomerListWithAddresses()
         {
             var customers = _customerDal.GetCustomerListWithAddresses();

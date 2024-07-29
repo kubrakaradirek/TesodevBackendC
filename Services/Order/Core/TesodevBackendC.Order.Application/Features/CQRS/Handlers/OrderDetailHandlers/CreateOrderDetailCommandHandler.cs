@@ -30,7 +30,6 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.OrderDetailHa
 
             var orderDetail = new OrderDetail
             {
-                Id=command.Id,
                 Quantity = command.Quantity,
                 Price = command.Price,
                 Status = "Sipariş oluşturuldu",

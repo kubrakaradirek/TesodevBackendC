@@ -8,7 +8,5 @@ namespace TesodevBackendC.Customer.WebApi.Business.Abstract
         CustomerWithAddressesDto GetCustomerWithAddresses(Guid id);
         List<ResultCustomerDto> TGetCustomerListWithAddresses();
         bool TValidateCustomer(Guid customerId);
-
-
     }
 }

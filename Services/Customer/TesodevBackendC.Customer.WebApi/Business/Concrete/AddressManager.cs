@@ -11,27 +11,22 @@ namespace TesodevBackendC.Customer.WebApi.Business.Concrete
         {
             _addressDal = addressDal;
         }
-
         public void TCreate(Address entity)
         {
            _addressDal.Create(entity);
         }
-
         public void TDelete(Address entity)
         {
             _addressDal.Delete(entity);
         }
-
         public Address TGetById(Guid id)
         {
             return _addressDal.GetById(id);
         }
-
         public List<Address> TGetListAll()
         {
             return _addressDal.GetListAll();
         }
-
         public void TUpdate(Address entity)
         {
             _addressDal.Update(entity);
