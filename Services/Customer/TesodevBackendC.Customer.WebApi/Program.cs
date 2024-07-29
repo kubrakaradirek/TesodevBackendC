@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using System.Text.Json.Serialization;
@@ -6,6 +7,7 @@ using TesodevBackendC.Customer.WebApi.Business.Concrete;
 using TesodevBackendC.Customer.WebApi.DataAccess.Abstract;
 using TesodevBackendC.Customer.WebApi.DataAccess.Concrete;
 using TesodevBackendC.Customer.WebApi.DataAccess.EntityFramework;
+using TesodevBackendC.Customer.WebApi.Validators.AddressValidator;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +38,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddControllers();
 
+builder.Services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Program>());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

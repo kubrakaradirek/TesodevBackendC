@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TesodevBackendC.Customer.WebApi.Business.Abstract;
 using TesodevBackendC.Customer.WebApi.Dtos.AddressDtos;
 using TesodevBackendC.Customer.WebApi.Entities;
+using TesodevBackendC.Customer.WebApi.Validators.AddressValidator;
 
 namespace TesodevBackendC.Customer.WebApi.Controllers
 {
@@ -11,9 +13,14 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
     public class AddressesController : ControllerBase
     {
         private readonly IAddressService _addressService;
-        public AddressesController(IAddressService addressService)
+        private readonly IValidator<CreateAddressDto> _createAddressValidator;
+        private readonly IValidator<UpdateAddressDto> _updateAddressValidator;
+
+        public AddressesController(IAddressService addressService, IValidator<CreateAddressDto> createAddressValidator, IValidator<UpdateAddressDto> updateAddressValidator)
         {
             _addressService = addressService;
+            _createAddressValidator = createAddressValidator;
+            _updateAddressValidator = updateAddressValidator;
         }
 
         [HttpGet]
@@ -26,6 +33,11 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
         [HttpPost]
         public IActionResult CreateAddress(CreateAddressDto createAddressDto)
         {
+            var validationResult = _createAddressValidator.Validate(createAddressDto);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors);
+            }
             Address address = new Address()
             {
                AddressLine1=createAddressDto.AddressLine1,
@@ -51,6 +63,11 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
         [HttpPut]
         public IActionResult UpdateAddress(UpdateAddressDto updateAddressDto)
         {
+            var validationResult = _updateAddressValidator.Validate(updateAddressDto);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors);
+            }
             Address address = new Address()
             {
                 Id = updateAddressDto.Id,

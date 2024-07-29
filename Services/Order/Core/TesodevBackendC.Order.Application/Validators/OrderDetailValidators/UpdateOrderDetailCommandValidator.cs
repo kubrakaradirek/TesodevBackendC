@@ -22,7 +22,7 @@ namespace TesodevBackendC.Order.Application.Validators.OrderDetailValidators
                .GreaterThan(0).WithMessage("Fiyat 0'dan büyük olmalıdır");
 
             RuleFor(command => command.CreatedAt)
-                .NotEmpty().WithMessage("luşturulma tarihi boş geçilemez.")
+                .NotEmpty().WithMessage("Oluşturulma tarihi boş geçilemez.")
                 .LessThanOrEqualTo(DateTime.Now).WithMessage("Oluşturulma tarihi gelecek tarihte olamaz.");
         }
     }

@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using TesodevBackendC.Customer.WebApi.Business.Abstract;
+using TesodevBackendC.Customer.WebApi.Dtos.AddressDtos;
 using TesodevBackendC.Customer.WebApi.Dtos.CustomerDtos;
 using TesodevBackendC.Customer.WebApi.Entities;
 
@@ -11,9 +14,13 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
     public class CustomersController : ControllerBase
     {
         private readonly ICustomerService _customerService;
-        public CustomersController(ICustomerService customerService)
+        private readonly IValidator<CreateCustomerDto> _createCustomerValidator;
+        private readonly IValidator<UpdateCustomerDto> _updateCustomerValidator;
+        public CustomersController(ICustomerService customerService, IValidator<CreateCustomerDto> createCustomerValidator, IValidator<UpdateCustomerDto> updateCustomerValidator)
         {
             _customerService = customerService;
+            _createCustomerValidator = createCustomerValidator;
+            _updateCustomerValidator = updateCustomerValidator;
         }
 
         [HttpGet]
@@ -26,6 +33,11 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
         [HttpPost]
         public IActionResult CreateCustomer(CreateCustomerDto createCustomerDto)
         {
+            var validationResult = _createCustomerValidator.Validate(createCustomerDto);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors);
+            }
             Customerr customerr = new Customerr()
             {
                 Name = createCustomerDto.Name,
@@ -47,6 +59,11 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
         [HttpPut]
         public IActionResult UpdateCustomer(UpdateCustomerDto updateCustomerDto)
         {
+            var validationResult = _updateCustomerValidator.Validate(updateCustomerDto);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors);
+            }
             var values = _customerService.TGetById(updateCustomerDto.Id);
             values.Id = updateCustomerDto.Id;
             values.Name = updateCustomerDto.Name;
