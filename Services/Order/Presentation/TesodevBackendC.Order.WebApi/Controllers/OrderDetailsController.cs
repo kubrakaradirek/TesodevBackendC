@@ -16,11 +16,11 @@ namespace TesodevBackendC.Order.WebApi.Controllers
         private readonly GetOrderDetailQueryHandler _getOrderDetailQueryHandler;
         private readonly GetOrderDetailByIdQueryHandler _getOrderDetailByIdQueryHandler;
         private readonly CreateOrderDetailCommandHandler _createOrderDetailCommandHandler;
-        private readonly UpdateOrderDetailCommandHadnler _updateOrderDetailCommandHandler;
+        private readonly UpdateOrderDetailCommandHandler _updateOrderDetailCommandHandler;
         private readonly DeleteOrderDetailCommandHandler _deleteOrderDetailCommandHandler;
         private readonly ChangeOrderStatusToFalseCommandHandler _changeOrderStatusToFalseCommandHandler;
         private readonly ChangeOrderStatusToTrueCommandHandler _changeOrderStatusToTrueCommandHandler;
-        public OrderDetailsController(GetOrderDetailQueryHandler getOrderDetailQueryHandler, GetOrderDetailByIdQueryHandler getOrderDetailByIdQueryHandler, DeleteOrderDetailCommandHandler deleteOrderDetailCommandHandler, UpdateOrderDetailCommandHadnler updateOrderDetailCommandHandler, CreateOrderDetailCommandHandler createOrderDetailCommandHandler, ChangeOrderStatusToFalseCommandHandler changeOrderStatusToFalseCommandHandler, ChangeOrderStatusToTrueCommandHandler changeOrderStatusToTrueCommandHandler)
+        public OrderDetailsController(GetOrderDetailQueryHandler getOrderDetailQueryHandler, GetOrderDetailByIdQueryHandler getOrderDetailByIdQueryHandler, DeleteOrderDetailCommandHandler deleteOrderDetailCommandHandler, UpdateOrderDetailCommandHandler updateOrderDetailCommandHandler, CreateOrderDetailCommandHandler createOrderDetailCommandHandler, ChangeOrderStatusToFalseCommandHandler changeOrderStatusToFalseCommandHandler, ChangeOrderStatusToTrueCommandHandler changeOrderStatusToTrueCommandHandler)
         {
             _getOrderDetailQueryHandler = getOrderDetailQueryHandler;
             _getOrderDetailByIdQueryHandler = getOrderDetailByIdQueryHandler;

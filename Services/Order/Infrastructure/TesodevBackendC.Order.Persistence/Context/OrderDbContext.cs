@@ -14,7 +14,6 @@ namespace TesodevBackendC.Order.Persistence.Context
         {
             optionsBuilder.UseSqlServer("Server=localhost,1480;initial Catalog=OBackendDb;User=sa;Password=622622aA.");
         }
-
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductOrderDetail> ProductOrderDetails { get; set; }

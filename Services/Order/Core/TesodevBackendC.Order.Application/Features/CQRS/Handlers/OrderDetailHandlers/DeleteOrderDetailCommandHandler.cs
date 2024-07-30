@@ -17,7 +17,6 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.OrderDetailHa
         {
             _repository = repository;
         }
-
         public async Task Handle(DeleteOrderDetailCommand command)
         {
             var value = await _repository.GetByIdAsync(command.Id);

@@ -10,12 +10,10 @@ namespace TesodevBackendC.Order.WebApi.Controllers
     public class ProductOrderDetailsController : ControllerBase
     {
         private readonly GetProductListByOrderDetailIdQueryHandler _getProductListByOrderIdQueryHandler;
-
         public ProductOrderDetailsController(GetProductListByOrderDetailIdQueryHandler getProductListByOrderIdQueryHandler)
         {
             _getProductListByOrderIdQueryHandler = getProductListByOrderIdQueryHandler;
         }
-
         [HttpGet("ProductListByOrderDetailId/{id}")]
         public async Task<IActionResult> ProductListByOrderDetailId(Guid id)
         {

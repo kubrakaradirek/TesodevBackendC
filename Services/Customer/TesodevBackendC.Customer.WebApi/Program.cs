@@ -11,20 +11,22 @@ using TesodevBackendC.Customer.WebApi.Validators.AddressValidator;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
+//Add DbContext configuration
 builder.Services.AddDbContext<CustomerDbContext>();
 
-//Map configuration
+//AutoMapper configuration
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-
+//Address configurations
 builder.Services.AddScoped<IAddressService, AddressManager>();
 builder.Services.AddScoped<IAddressDal, EfAddressDal>();
 
+//Customers configurations
 builder.Services.AddScoped<ICustomerService, CustomerManager>();
 builder.Services.AddScoped<ICustomerDal, EfCustomerDal>();
 
+//CORS policy configuration
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
@@ -38,19 +40,23 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddControllers();
 
+//FluentValidation configuration
 builder.Services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Program>());
+
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+//Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+//Enabling CORS policy configuration
 app.UseCors("AllowAll");
 
 app.UseAuthorization();

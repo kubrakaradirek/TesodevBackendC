@@ -9,7 +9,6 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Queries.ProductOrderDe
     public class GetProductListByOrderDetailIdQuery
     {
         public Guid OrderDetailId { get; set; }
-
         public GetProductListByOrderDetailIdQuery(Guid orderDetailId)
         {
             OrderDetailId = orderDetailId;

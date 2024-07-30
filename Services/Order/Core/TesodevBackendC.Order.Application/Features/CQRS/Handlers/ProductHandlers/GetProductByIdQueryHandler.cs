@@ -26,7 +26,6 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.ProductHandle
                 Name = values.Name,
                 ImageUrl = values.ImageUrl
             };
-
         }
     }
 }

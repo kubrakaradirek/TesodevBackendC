@@ -17,7 +17,6 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.ProductHandle
         {
             _repository = repository;
         }
-
         public async Task Handle(DeleteProductCommand command)
         {
             var value = await _repository.GetByIdAsync(command.Id);

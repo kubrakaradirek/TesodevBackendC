@@ -10,11 +10,11 @@ using TesodevBackendC.Order.Domain.Entities;
 
 namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers
 {
-    public class UpdateOrderDetailCommandHadnler
+    public class UpdateOrderDetailCommandHandler
     {
         private readonly IRepository<OrderDetail> _repository;
         private readonly IValidator<UpdateOrderDetailCommand> _validator;
-        public UpdateOrderDetailCommandHadnler(IRepository<OrderDetail> repository, IValidator<UpdateOrderDetailCommand> validator)
+        public UpdateOrderDetailCommandHandler(IRepository<OrderDetail> repository, IValidator<UpdateOrderDetailCommand> validator)
         {
             _repository = repository;
             _validator = validator;

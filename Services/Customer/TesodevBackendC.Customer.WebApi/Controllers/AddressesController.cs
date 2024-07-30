@@ -15,7 +15,6 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
         private readonly IAddressService _addressService;
         private readonly IValidator<CreateAddressDto> _createAddressValidator;
         private readonly IValidator<UpdateAddressDto> _updateAddressValidator;
-
         public AddressesController(IAddressService addressService, IValidator<CreateAddressDto> createAddressValidator, IValidator<UpdateAddressDto> updateAddressValidator)
         {
             _addressService = addressService;

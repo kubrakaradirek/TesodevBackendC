@@ -13,7 +13,6 @@ namespace TesodevBackendC.Order.Application.Features.CQRS.Handlers.ProductOrderD
     public class GetProductListByOrderDetailIdQueryHandler
     {
         private readonly IRepository<ProductOrderDetail> _repository;
-
         public GetProductListByOrderDetailIdQueryHandler(IRepository<ProductOrderDetail> repository)
         {
             _repository = repository;

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TesodevBackendC.Order.Domain.Entities
 {
+    //This name is used in place of the Order table
     public class OrderDetail
     {
         public Guid Id { get; set; }
@@ -18,6 +19,5 @@ namespace TesodevBackendC.Order.Domain.Entities
         public Guid AddressId { get; set; }
         //Many to many Product
         public List<ProductOrderDetail> ProductOrders { get; set; }
-
     }
 }

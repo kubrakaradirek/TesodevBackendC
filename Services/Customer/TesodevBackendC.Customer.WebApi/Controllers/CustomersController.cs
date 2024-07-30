@@ -80,7 +80,6 @@ namespace TesodevBackendC.Customer.WebApi.Controllers
             return Ok(result);
         }
 
-
         [HttpGet("ValidateCustomer/{id}")]
         public IActionResult ValidateCustomer(Guid id)
         {
