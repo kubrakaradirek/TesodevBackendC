@@ -1,4 +1,4 @@
-#  TESODEV BACKEND CHALLENGE
+#  BACKEND CHALLENGE
 Kullanılan Teknolojiler: C#, ASP.NET Core, Microsoft SQL Server, Docker, Web API, FluentValidation, Ocelot API Gateway, RabbitMQ
 
 ##  Proje Genel Şeması
