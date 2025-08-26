@@ -1,5 +1,5 @@
 #  BACKEND CHALLENGE
-Kullanılan Teknolojiler: C#, ASP.NET Core, Microsoft SQL Server, Docker, Web API, FluentValidation, Ocelot API Gateway, RabbitMQ
+Technologies Used: C#, ASP.NET Core, Microsoft SQL Server, Docker, Web API, FluentValidation, Ocelot API Gateway, RabbitMQ
 
 ##  Proje Genel Şeması
 
@@ -17,16 +17,16 @@ Kullanılan Teknolojiler: C#, ASP.NET Core, Microsoft SQL Server, Docker, Web AP
     - Presentation
        - TesodevBackendC.Order.WebApi Project
        - 
-Sipariş yönetim sistemi, müşteri ve sipariş işlemlerini yönetmek için iki mikroservisten oluşmaktadır: Customer ve Order mikroservisleri. API Gateway için Ocelot kullanıldı.
+The Order Management System consists of two microservices, Customer and Order, which manage customer and order operations. Ocelot was used as the API Gateway.
 
-Customer Mikroservisi : Customer mikroservisi tek bir projede gerçekleştirildi ve N-Tier mimari kullanılarak yapılandırıldı.
-- Entities Katmanı: Adress ve Customer entityleri oluşturularak, Customer ile Adress arasında bire-çok ilişki kuruldu.
-- DataAccess Katmanı: Abstract klasöründe her bir entity için interfaceler oluşturuldu ve EF kullanılarak temel CRUD işlemleri yapıldı. Concrete klasöründe CustomerDbContext yazıldı ve Docker üzerinde container oluşturularak MS SQL Server ile migration yapıldı.
-- Business Katmanı: Temel CRUD işlemleri ve özel metotlar yazıldı. Örneğin, Customer ID'ye göre Customer ve Adress bilgilerini getirme, tüm customer listesini adres bilgileriyle birlikte getirme gibi işlemler yapıldı. FluentValidation kullanılarak validasyonlar sağlandı.
-- API Katmanı: CRUD işlemleri API endpointleri olarak yazıldı ve tüm metotlar test edildi.
+Customer Microservice: The Customer microservice was implemented as a single project using N-Tier architecture.
+- Entities Layer: Created Address and Customer entities, establishing a one-to-many relationship between Customer and Address.
+- DataAccess Layer: Interfaces were created for each entity in the Abstract folder, and basic CRUD operations were implemented using Entity Framework. The CustomerDbContext was written in the Concrete folder, and migrations were performed on MS SQL Server using a Docker container.
+- Business Layer: Implemented basic CRUD operations and custom methods, e.g., retrieving Customer and Address information by Customer ID, fetching all customers with their addresses. FluentValidation was used for validations.
+- API Layer: CRUD operations were exposed as API endpoints, and all methods were tested.
 
-Order Mikroservisi : Order mikroservisinde Onion Architecture kullanıldı.
-- Domain Katmanı: OrderDetail ve Product arasında many-to-many ilişki kurularak bir ara tablo eklendi. OrderLog sınıfı, RabbitMQ mesajlarının veritabanında tutulması için oluşturuldu.
+Order Microservice: The Order microservice was built using Onion Architecture.
+- Domain Layer: Established a many-to-many relationship between OrderDetail and Product with a junction table. The OrderLog class was created to store RabbitMQ messages in the database.
 - Application Katmanı: Repository interface yazılarak Persistence katmanındaki repository sınıfına implement edildi. CRUD işlemleri, OrderDetail ID'ye göre ürün listesi, sipariş iptali veya aktifleştirme işlemleri CQRS design pattern kullanılarak yazıldı. Validasyonlar bu katmanda gerçekleştirildi.
 - Persistence Katmanı: Docker'da container oluşturularak MSSQL ile veritabanı kuruldu.
 - Web API Katmanı: RabbitMQ mesajları kullanılarak Create OrderDetail işlemleri gerçekleştirildi ve OrderConsumer ile veritabanına mesajlar kaydedildi. CRUD işlemleri API endpointleri olarak yazıldı.
