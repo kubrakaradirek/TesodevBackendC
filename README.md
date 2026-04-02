@@ -27,8 +27,8 @@ Customer Microservice: The Customer microservice was implemented as a single pro
 
 Order Microservice: The Order microservice was built using Onion Architecture.
 - Domain Layer: Established a many-to-many relationship between OrderDetail and Product with a junction table. The OrderLog class was created to store RabbitMQ messages in the database.
-- Application Katmanı: Repository interface yazılarak Persistence katmanındaki repository sınıfına implement edildi. CRUD işlemleri, OrderDetail ID'ye göre ürün listesi, sipariş iptali veya aktifleştirme işlemleri CQRS design pattern kullanılarak yazıldı. Validasyonlar bu katmanda gerçekleştirildi.
-- Persistence Katmanı: Docker'da container oluşturularak MSSQL ile veritabanı kuruldu.
-- Web API Katmanı: RabbitMQ mesajları kullanılarak Create OrderDetail işlemleri gerçekleştirildi ve OrderConsumer ile veritabanına mesajlar kaydedildi. CRUD işlemleri API endpointleri olarak yazıldı.
+- Application Layer: Repository interfaces were defined and implemented by repository classes within the Persistence layer. CRUD operations, product listing by OrderDetail ID, and order cancellation or activation processes were developed using the CQRS design pattern. Data validation was also handled within this layer.
+- Persistence Layer: The database environment was established using MSSQL running within a Docker container.
+- Web API Layer: "Create OrderDetail" operations were executed using RabbitMQ messaging, and an OrderConsumer was utilized to persist these messages to the database. Standard CRUD operations were exposed as API endpoints.
 
-Postman ile tüm metotlar için CRUD işlemleri, özel metotlar ve FluentValidation testleri gerçekleştirildi ve çalışmaları doğrulandı.
+Testing & Verification: All CRUD operations, custom methods, and FluentValidation logic were thoroughly tested and verified via Postman to ensure full system functionality and reliability.
